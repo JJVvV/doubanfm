@@ -34,7 +34,7 @@
 
 ## 下载
 
-[**Download**](https://github.com/jjvvv/doubanfm/releases/latest), unzip, and move `Anatine.app` to the `/Applications` directory.
+[**Download**](https://github.com/jjvvv/doubanfm/releases/latest)
 
 
 ### 感谢
