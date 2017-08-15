@@ -1,0 +1,37 @@
+{
+  "name": "FM",
+  "productName": "FM",
+  "version": "1.0.0",
+  "description": "豆瓣FM",
+  "main": "main.js",
+  "scripts": {
+    "start": "./node_modules/electron/dist/Electron.app/Contents/MacOS/Electron .",
+    "build": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true --out=release-builds",
+    "build:macos": "electron-packager . --overwrite --asar --out=dist --ignore='^media$' --platform=darwin --arch=x64 --icon=build/icon.icns --sign='Developer ID Application: Alex Liu' && cd dist/FM-darwin-x64 && zip -ryXq9 ../FM-osx-${npm_package_version}.zip FM.app",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.example.app",
+    "mac": {
+      "category": "Development"
+    }
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "element-ready": "^2.1.0"
+  },
+  "devDependencies": {
+    "electron": "^1.4.10",
+    "electron-packager": "^8.0.0"
+  }
+}
