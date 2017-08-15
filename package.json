@@ -1,7 +1,7 @@
 {
   "name": "FM",
   "productName": "FM",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "豆瓣FM",
   "main": "main.js",
   "scripts": {

@@ -6,7 +6,7 @@ const PubSub = require('./src/pubsub')
 
 function removeElement(){
     let ad = $('.section-switcher'),
-        left = $('.left'),
+        left = $('.left > div.jBvxsI'),
         feedback = $('.feedback')
 
     //主广告
@@ -25,6 +25,7 @@ PubSub.subscribe('next', next)
 PubSub.subscribe('prev', prev)
 PubSub.subscribe('togglePlay', togglePlay)
 PubSub.subscribe('toggleLike', toggleLike)
+PubSub.subscribe('toggleLike', likeNotification)
 
 function next(){
     clickElement($('label[title="下一首"]').children[0])
@@ -43,6 +44,36 @@ function togglePlay(){
 function toggleLike(){
     let toggleButton = $('label[title="加红心"]') || $('label[title="取消红心"]')
     clickElement(toggleButton.children[0])
+}
+
+function likeNotification(type, data){
+
+    //页面激活时则不提醒
+     if(!document.hidden) return
+    let isLike = $('label[title="取消红心"]') !== null
+    let title = $('.link._3bHLm1OOWrgMRrfiRpBpRz').innerHTML
+    let url = getCover()
+    let notification = {
+        title: title,
+        body: isLike ? '已标注为喜欢': '已取消喜欢',
+        icon: url
+    }
+    const myNotification = new window.Notification(notification.title, notification)
+
+    myNotification.onclick = () => {
+        console.log('Notification clicked')
+    }
+}
+
+// 获取封面地址
+function getCover(){
+    let url = $('.cover').style.backgroundImage;
+    let reg = /url\((?:'|")?([^'"]+)+(?:'|")?/
+    let res = url.match(reg)
+
+    if(res){
+        return res[1]
+    }
 }
 
 function clickElement(element){

@@ -1,8 +1,9 @@
 const  electron  = require('electron')
-const {app, globalShortcut, ipcMain} = electron
+const {app, globalShortcut, ipcMain, Menu} = electron
 // Module to control application life.
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+const appMenu = require('./menu')
 const path = require('path')
 const url = require('url')
 let willQuitApp = false;
@@ -11,6 +12,7 @@ let willQuitApp = false;
 let mainWindow
 
 function createWindow () {
+  Menu.setApplicationMenu(appMenu);
   // Create the browser window.
   mainWindow = new BrowserWindow({
       width: 1080,
@@ -30,18 +32,17 @@ function createWindow () {
       icon: path.join(__dirname, 'build/icon.icns')
   })
 
-
-    mainWindow.loadURL('https://douban.fm');
+  mainWindow.loadURL('https://douban.fm');
 
     mainWindow.webContents.on('did-finish-load', ()=>{
-        let code
-
-        let operateObj = {
-            'CommandOrControl+0': 'window.PubSub.publish("next")',
-            'CommandOrControl+9': 'window.PubSub.publish("prev")',
-            'CommandOrControl+7': 'window.PubSub.publish("toggleLike")',
-            'CommandOrControl+8': 'window.PubSub.publish("togglePlay")',
-        }
+        let isFocus = mainWindow.isVisible(),
+            json = JSON.stringify({isFocus: isFocus}),
+            operateObj = {
+                'CommandOrControl+0': 'window.PubSub.publish("next")',
+                'CommandOrControl+9': 'window.PubSub.publish("prev")',
+                'CommandOrControl+7': `window.PubSub.publish("toggleLike",${json})`,
+                'CommandOrControl+8': 'window.PubSub.publish("togglePlay")',
+            }
 
         let shortcut = (key, code) => {
             globalShortcut.register(key, () => {
