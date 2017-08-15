@@ -7,7 +7,7 @@
 
 <br>
 <div align="center">
-	<a href="https://github.com/sindresorhus/anatine/releases/latest" align="center">
+	<a href="https://github.com/jjvvv/doubanfm/releases/latest" align="center">
 		<img src="media/doubanfm.png" width="617">
 	</a>
 </div>
@@ -29,7 +29,7 @@
 
 ## 下载
 
-[**Download**](https://github.com/sindresorhus/anatine/releases/latest), unzip, and move `Anatine.app` to the `/Applications` directory.
+[**Download**](https://github.com/jjvvv/doubanfm/releases/latest), unzip, and move `Anatine.app` to the `/Applications` directory.
 
 
 ### 感谢
