@@ -3,7 +3,7 @@
 
 
 
-这个应用基于 [豆瓣FM](https://douban.fm) 开发, 并添加了一些桌面端的小功能.
+这是一个基于 [electron](https://github.com/electron/electron) 开发的桌面端[豆瓣FM](https://douban.fm).
 
 ## WHY
 
