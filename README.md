@@ -37,11 +37,15 @@
 [**Download**](https://github.com/jjvvv/doubanfm/releases/latest)
 
 
-### 感谢
+## 感谢
 
 - [豆瓣FM](https://douban.fm)
 - [Electron quick start](https://github.com/electron/electron-quick-start)
 
+## TODO
+
+* 支持上一首按钮
+* 支持单曲循环
 
 ## License
 
